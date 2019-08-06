@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using MovieLibrary.WebAPI.Models;
 
 namespace MovieLibrary.WebAPI
 {
@@ -29,6 +31,7 @@ namespace MovieLibrary.WebAPI
         {
             services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
                 .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("MovieLibraryDb"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

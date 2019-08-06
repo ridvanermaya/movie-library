@@ -1,0 +1,14 @@
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/bin/Debug/netcoreapp2.2/MovieLibrary.WebAPI.deps.json
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/bin/Debug/netcoreapp2.2/MovieLibrary.WebAPI.runtimeconfig.json
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/bin/Debug/netcoreapp2.2/MovieLibrary.WebAPI.runtimeconfig.dev.json
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/bin/Debug/netcoreapp2.2/MovieLibrary.WebAPI.dll
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/bin/Debug/netcoreapp2.2/MovieLibrary.WebAPI.pdb
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.csprojAssemblyReference.cache
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.csproj.CoreCompileInputs.cache
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.RazorAssemblyInfo.cache
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.RazorAssemblyInfo.cs
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.AssemblyInfoInputs.cache
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.AssemblyInfo.cs
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.RazorTargetAssemblyInfo.cache
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.dll
+/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/obj/Debug/netcoreapp2.2/MovieLibrary.WebAPI.pdb

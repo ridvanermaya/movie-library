@@ -17,13 +17,13 @@ namespace MovieLibrary.WebAPI.Controllers
         {
             _context = context;
 
-            if(_context.Movies.Count() == 0)
-            {
-                // Create a new Movie if collection is empty,
-                // which means you can't delete all movies.
-                _context.Movies.Add(new Movie { Title = "Hobbs & Shaw", Genre = "Action", Director = "David Leitch"});
-                _context.SaveChanges();
-            }
+            // if(_context.Movies.Count() == 0)
+            // {
+            //     // Create a new Movie if collection is empty,
+            //     // which means you can't delete all movies.
+            //     _context.Movies.Add(new Movie { Title = "Hobbs & Shaw", Genre = "Action", Director = "David Leitch"});
+            //     _context.SaveChanges();
+            // }
         }
 
         // GET: api/MovieLibrary

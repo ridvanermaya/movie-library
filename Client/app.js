@@ -80,6 +80,16 @@ function GetCount(data) {
     }
 }
 
+function EditMovie(movieId)
+{
+    $.each(movies, function(index, movie) {
+        if (movie.movieId === movieId)
+        {
+            $()
+        }
+    })
+}
+
 // function EditMovie(id) {
 //     $.each(movies, function(i, item) {
 //         if (item.MovieId === id) {

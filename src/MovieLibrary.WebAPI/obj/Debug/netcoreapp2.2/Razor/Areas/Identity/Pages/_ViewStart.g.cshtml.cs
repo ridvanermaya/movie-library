@@ -13,18 +13,18 @@ namespace MovieLibrary.WebAPI.Areas.Identity.Pages
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#line 1 "/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/Areas/Identity/Pages/_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
 #line 2 "/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/Areas/Identity/Pages/_ViewImports.cshtml"
 using MovieLibrary.WebAPI.Areas.Identity;
 
 #line default
 #line hidden
-#line 3 "/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/Areas/Identity/Pages/_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"49164482e4e310a0e7d9eaf4f04696b621019fe0", @"/Areas/Identity/Pages/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19ca566fef57d16afe0ac7fa40a99f64830859e1", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6cbe26b2543b5495e560f204743d1589f147368d", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     public class Areas_Identity_Pages__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

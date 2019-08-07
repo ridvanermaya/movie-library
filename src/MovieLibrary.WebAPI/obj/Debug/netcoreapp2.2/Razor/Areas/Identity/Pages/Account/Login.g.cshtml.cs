@@ -13,13 +13,13 @@ namespace MovieLibrary.WebAPI.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
-#line 2 "/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/Areas/Identity/Pages/_ViewImports.cshtml"
-using MovieLibrary.WebAPI.Areas.Identity;
+#line 1 "/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/Areas/Identity/Pages/_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
-#line 3 "/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/Areas/Identity/Pages/_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
+#line 2 "/Users/redone/git/DevCodeCamp/Week_09/Projects/movie-library/src/MovieLibrary.WebAPI/Areas/Identity/Pages/_ViewImports.cshtml"
+using MovieLibrary.WebAPI.Areas.Identity;
 
 #line default
 #line hidden
@@ -29,7 +29,7 @@ using MovieLibrary.WebAPI.Areas.Identity.Pages.Account;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5089ca35d15a13c08e4f99d915df222b55e3587e", @"/Areas/Identity/Pages/Account/Login.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19ca566fef57d16afe0ac7fa40a99f64830859e1", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6cbe26b2543b5495e560f204743d1589f147368d", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"73840f45ceb4c75120cf6dcdb863cc0f8a39a2cc", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
     public class Areas_Identity_Pages_Account_Login : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {

@@ -1,19 +1,20 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using MovieLibrary.WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using MovieLibrary.WebAPI.Models;
+using Microsoft.AspNetCore.Cors;
 
-namespace MovieLibrary.WebAPI.Controllers
+namespace MovieLibraryController.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MovieLibrary : ControllerBase
+    public class MovieLibraryController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public MovieLibrary(ApplicationDbContext context)
+        public MovieLibraryController(ApplicationDbContext context)
         {
             _context = context;
 
@@ -26,14 +27,14 @@ namespace MovieLibrary.WebAPI.Controllers
             // }
         }
 
-        // GET: api/MovieLibrary
+        // GET: api/MovieLibraryController
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
         {
             return await _context.Movies.ToListAsync();
         }
 
-        // GET: api/MovieLibrary/5
+        // GET: api/MovieLibraryController/5
         [HttpGet("{MovieId}")]
         public async Task<ActionResult<Movie>> GetMovie(int movieId)
         {
@@ -47,7 +48,7 @@ namespace MovieLibrary.WebAPI.Controllers
             return movie;
         }
 
-        // POST: api/MovieLibrary
+        // POST: api/MovieLibraryController
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
@@ -57,7 +58,8 @@ namespace MovieLibrary.WebAPI.Controllers
             return CreatedAtAction(nameof(GetMovie), new { movieId = movie.MovieId }, movie);
         }
 
-        // PUT: api/MovieLibrary
+        // PUT: api/MovieLibraryController
+        
         [HttpPut("{MovieId}")]
         public async Task<IActionResult> PutMovie(int movieId, Movie movie)
         {
@@ -72,7 +74,7 @@ namespace MovieLibrary.WebAPI.Controllers
             return NoContent();
         }
 
-        // DELETE: api/MovieLibrary/5
+        // DELETE: api/MovieLibraryController/5
         [HttpDelete("{MovieId}")]
         public async Task<IActionResult> DeleteMovie(int movieId)
         {

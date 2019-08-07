@@ -1,41 +1,43 @@
-const uri = "api/MovieLibrary";
+const uri = "https://localhost:5001/api/MovieLibrary";
 let movies = null;
+
+$(document).ready(function() {
+    GetData();
+});
 
 function GetData() {
     $.ajax({
         type: "GET",
         url: uri,
-        cache: false,
         success: function(data) {
             const tBody = $("#movies");
 
             $(tBody).empty();
             GetCount(data.length);
 
-            $.each(data, function(key, item) {
-                const tr = $("<tr></tr>")
-                    .append($("<td></td>").text(item.Title))
-                    .append($("<td></td>").text(item.Genre))
-                    .append($("<td></td>").text(item.Director))
-                    .append(
-                        $("<td></td>").append(
-                            $("<button>Edit</button>").on("click", function() {
-                                EditItem(item.MovieId);
-                            })
-                        )
-                    )
-                    .append(
-                        $("<td></td>").append(
-                            $("<button>Delete</button>").on("click", function() {
-                                DeleteItem(item.MovieId);
-                            })
-                        )
-                    );
-                    
-                tr.appendTo(tBody);
-            });
+            $.each(data, function(i, item) {
+                let tr = "<tr>";
+                    tr += "<td>" + item.title + "</td>"
+                    + "<td>" + item.genre + "</td>"
+                    + `<td> ${item.director} </td>`
+                    + "<td>"
+                    + `<button id="edit_button_${i}">Edit</button>`
+                    + "</td>"
+                    + "<td>"
+                    + `<button id="delete_button_${i}">Delete</button>`
+                    + "</td>"
+                    + "</tr>";
 
+                tBody.append(tr);
+                
+                $(`#edit_button_${i}`).on("click", function() {
+                    EditMovie(item.movieId);
+                })
+                $(`#delete_button_${i}`).on("click", function() {
+                    DeleteMovie(item.movieId);
+                })
             movies = data;
+            })
         }
     });
 }
@@ -53,8 +55,8 @@ function AddMovie() {
         url: uri,
         contentType: "application/json",
         data: JSON.stringify(movie),
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert("Something unexpected happened!");
+        error: (error) => {
+            console.log(error);
         },
         success: function(result) {
             GetData();
@@ -77,6 +79,20 @@ function GetCount(data) {
         el.text("No " + name);
     }
 }
+
+// function EditMovie(id) {
+//     $.each(movies, function(i, item) {
+//         if (item.MovieId === id) {
+//             $("#edit-movie-id").val(item.movieId);
+//             $("#edit-title").val(item.title);
+//             $("#edit-genre").val(item.genre);
+//             $("#edit-director").val(item.director);
+//         }
+//     });
+//     $("#spoiler").css({ display: "block"});
+// }
+
+
 // const uri = "api/MovieLibrary";
 // let movieLibrary = null;
 // function getCount(data) {
@@ -176,17 +192,7 @@ function GetCount(data) {
 //     });
 // }
 
-// function editItem(id) {
-//     $.each(movieLibrary, function(key, item) {
-//         if (item.MovieId === id) {
-//             $("#edit-movie-id").val(item.MovieId);
-//             $("#edit-title").val(item.Title);
-//             $("#edit-genre").val(item.Genre);
-//             $("#edit-director").val(item.Director);
-//         }
-//     });
-//     $("#spoiler").css({ display: "block"});
-// }
+
 
 // $(".my-form").on("submit", function() {
 //     const item = {

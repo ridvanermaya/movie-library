@@ -17,15 +17,15 @@
                     <div class="col-12" id="add-movie">
                         <div class="form-group col-10">
                             <label for="inputMovieTitle">Movie Title</label>
-                            <input type="text" class="form-control" id="add-title" placeholder="Enter movie title..">
+                            <input type="text" class="form-control" id="add-title" placeholder="Enter movie title.." required>
                         </div>
                         <div class="form-group col-10">
                             <label for="inputMovieGenre">Movie Genre</label>
-                            <input type="text" class="form-control" id="add-genre" placeholder="Enter movie genre..">
+                            <input type="text" class="form-control" id="add-genre" placeholder="Enter movie genre.." required>
                         </div>
                         <div class="form-group col-10">
                             <label for="inputMovieDirector">Movie Director</label>
-                            <input type="text" class="form-control" id="add-director" placeholder="Enter movie director..">
+                            <input type="text" class="form-control" id="add-director" placeholder="Enter movie director.." required>
                         </div>
                         <button type="submit" class="btn btn-primary col-4" id="btn-add-movie">Add a New Movie</button>
                     </div>
@@ -52,14 +52,17 @@
                     </div>
                 </form>
             </div>
-            <table class="col-6 moviesTable">
-                <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Director</th>
-                </tr>
-                <tbody id="movie-library"></tbody>
-            </table>
+            <div class="col-6">
+                <p id="counter"></p>
+                <table class="col-12 moviesTable">
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Director</th>
+                    </tr>
+                    <tbody id="movies"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 

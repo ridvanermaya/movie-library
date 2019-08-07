@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(224, 220, 216);
+    margin: auto;
+    width: 60%;
+}
+
+#edit-movie {
+    margin-top: 10px;
+}
+
+.mainTitle {
+    text-align: center;
+}
+
+#btn-add-movie {
+    width: auto;
+    margin-left: 16px;
+}
+
+#btn-edit-movie {
+    width: auto;
+    margin-left: 16px;
+}

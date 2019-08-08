@@ -15,8 +15,8 @@ function GetData() {
             $(tBody).empty();
 
             $.each(movies, function(index, movie) {
-                let tr = `<tr style="line-height: 10px;"></tr>`;
-                let td = `<td style="line-height: 50px;"></td>`;
+                let tr = `<tr></tr>`;
+                let td = `<td style="line-height: 40px;"></td>`;
                 let divModal = `<div class="modal fade" id="edit-movie-${movie.movieId}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">

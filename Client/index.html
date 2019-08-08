@@ -8,15 +8,15 @@
         <link rel="stylesheet" href="style.css">
         <title>Movie Library</title>
     </head>
-    <body>
-        <div class="jumbotron jumbotron-fluid" style="text-align: center; border-radius: 10px;">
+    <body class="col-xl-8 col-lg-10">
+        <div class="jumbotron jumbotron-fluid" style="text-align: center; border-radius: 10px; margin-top: 10px;">
             <div class="container">
                 <h1 class="display-4">Movie Library</h1>
                 <p class="lead">Welcome to Movie Library! In this library, you're able to add, view, update, and delete movies.</p>
             </div>
         </div>
 
-        <button type="button" id="btn-add-new-movie" class="btn btn-primary" data-toggle="modal" data-target="#add-new-movie" style="margin: auto; display: block; height: 60px; width: 200px;">Add a New Movie</button>
+        <button type="button" id="btn-add-new-movie" class="btn btn-secondary" data-toggle="modal" data-target="#add-new-movie" style="margin: auto; display: block; height: 60px; width: 200px;">Add a New Movie</button>
         
         <br>
 
@@ -74,6 +74,7 @@
         </div>
 
         <div class="modals"></div>
+        
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="app.js"></script>

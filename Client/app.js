@@ -17,11 +17,11 @@ function GetData() {
             $.each(movies, function(index, movie) {
                 let tr = "<tr></tr>";
                 let td = "<td></td>";
-                let divModal = `<div class="modal fade" id="edit-movie-${index + 1}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
+                let divModal = `<div class="modal fade" id="edit-movie-${movie.movieId}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="edit-movie-${index + 1}">Edit Movie</h5>
+                                                <h5 class="modal-title" id="edit-movie-${movie.movieId}">Edit Movie</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -30,15 +30,15 @@ function GetData() {
                                                 <form>
                                                     <div class="form-group">
                                                         <label for="movie-title" class="col-form-label">Movie Title</label>
-                                                        <input type="text" class="form-control" id="edit-movie-title-${index + 1}">
+                                                        <input type="text" class="form-control" id="edit-movie-title-${movie.movieId}">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="movie-genre" class="col-form-label">Movie Genre</label>
-                                                        <input type="text" class="form-control" id="edit-movie-genre-${index + 1}">
+                                                        <input type="text" class="form-control" id="edit-movie-genre-${movie.movieId}">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="movie-director" class="col-form-label">Movie Director</label>
-                                                        <input type="text" class="form-control" id="edit-movie-director-${index + 1}">
+                                                        <input type="text" class="form-control" id="edit-movie-director-${movie.movieId}">
                                                     </div>
                                                 </form>
                                             </div>
@@ -58,15 +58,15 @@ function GetData() {
                     ).append(
                         $(td).text(movie.director)
                     ).append(
-                        `<button id="btn-edit-movie-${index + 1}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-movie-${index + 1}">Edit</button>`
+                        `<button id="btn-edit-movie-${movie.movieId}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-movie-${movie.movieId}">Edit</button>`
                     ).append(
-                        `<button id="btn-delete-movie-${index + 1}"type="button" class="btn btn-primary">Delete</button>`
+                        `<button onclick="DeleteMovie(${movie.movieId})" id="btn-delete-movie-${movie.movieId}"type="button" class="btn btn-primary">Delete</button>`
                     )
                 );
                 $(".modals").append($(divModal));
-                $(`#edit-movie-title-${index + 1}`).val(movie.title);
-                $(`#edit-movie-genre-${index + 1}`).val(movie.genre);
-                $(`#edit-movie-director-${index + 1}`).val(movie.director);
+                $(`#edit-movie-title-${movie.movieId}`).val(movie.title);
+                $(`#edit-movie-genre-${movie.movieId}`).val(movie.genre);
+                $(`#edit-movie-director-${movie.movieId}`).val(movie.director);
             });
         }
     });
@@ -127,46 +127,41 @@ function EditMovie(movieId)
         contentType: "application/json",
         data: JSON.stringify(movie),
         success: function(result) {
-
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Movie is updated!',
+                showConfirmButton: false,
+                timer: 2500
+            })
             GetData();
         }
     });
 }
 
-
-// function deleteItem(id) {
-//     $.ajax({
-//         url: uri + "/" + id,
-//         type: "DELETE",
-//         success: function(result) {
-//             getData();
-//         }
-//     });
-// }
-
-
-
-// $(".my-form").on("submit", function() {
-//     const item = {
-//         Title = $("#edit-title").val(),
-//         Genre = $("#edit-genre").val(),
-//         Director = $("#edit-director").val()
-//     };
-
-//     $.ajax({
-//         url: uri + "/" + $("edit-movie-id").val(),
-//         type: "PUT",
-//         accepts: "application/json",
-//         data: JSON.stringify(item),
-//         success: function(result) {
-//             getData();
-//         }
-//     });
-
-//     closeInput();
-//     return false;
-// });
-
-// function closeInput() {
-//     $("#spoiler").css({ display: "none" });
-// }
+function DeleteMovie(movieId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url: uri + "/" + movieId,
+                type: "DELETE",
+                success: function() {
+                    GetData();
+                }
+            });
+             Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+          )
+        }
+      })
+}

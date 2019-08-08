@@ -1,20 +1,25 @@
 const uri = "https://localhost:5001/api/MovieLibrary";
 let movies = null;
 
-$(document).ready(function() {
+$(document).ready(function() 
+{
     GetData();
 });
 
-function GetData() {
-    $.ajax({
+function GetData() 
+{
+    $.ajax(
+    {
         type: "GET",
         url: uri,
-        success: function(movies) {
+        success: function(movies) 
+        {
             const tBody = $("#movies");
 
             $(tBody).empty();
 
-            $.each(movies, function(index, movie) {
+            $.each(movies, function(index, movie) 
+            {
                 let tr = `<tr></tr>`;
                 let td = `<td style="line-height: 40px; vertical-align: middle;"></td>`;
                 let divModal = `<div class="modal fade" id="edit-movie-${movie.movieId}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
@@ -71,30 +76,38 @@ function GetData() {
     });
 }
 
-function AddMovie() {
-    const movie = {
+function AddMovie() 
+{
+    const movie = 
+    {
         Title: $("#add-title").val(),
         Genre: $("#add-genre").val(),
         Director: $("#add-director").val()
     };
 
-    if(movie.Title === "" || movie.Genre === "" || movie.Director === "") {
+    if(movie.Title === "" || movie.Genre === "" || movie.Director === "") 
+    {
         Swal.fire(
             'Empty Fields?',
             'You need to input "Movie Title", "Movie Genre", and "Movie Director".',
             'question'
           )
-    } else {
-        $.ajax({
+    } 
+    else 
+    {
+        $.ajax(
+        {
             type: "POST",
             accepts: "application/json",
             url: uri,
             contentType: "application/json",
             data: JSON.stringify(movie),
-            error: (error) => {
+            error: (error) => 
+            {
                 console.log(error);
             },
-            success: function(result) {
+            success: function(result) 
+            {
                 GetData();
                 $("#add-title").val(""),
                 $("#add-genre").val(""),
@@ -104,15 +117,20 @@ function AddMovie() {
     }
 }
 
-function GetCount(data) {
+function GetCount(data) 
+{
     const el = $("#counter");
     let name = "movie";
-    if (data) {
-        if (data > 1) {
+    if (data) 
+    {
+        if (data > 1) 
+        {
             name = "movies";
         }
         el.text(data + " " + name);
-    } else {
+    } 
+    else 
+    {
         el.text("No " + name);
     }
 }
@@ -120,22 +138,26 @@ function GetCount(data) {
 
 function EditMovie(movieId)
 {
-    const movie = {
+    const movie = 
+    {
         MovieId: movieId,
         Title: $(`#edit-movie-title-${movieId}`).val(),
         Genre: $(`#edit-movie-genre-${movieId}`).val(),
         Director: $(`#edit-movie-director-${movieId}`).val()
     };
 
-    $.ajax({
+    $.ajax(
+    {
         url: uri + "/" + movieId,
         type: "PUT",
         accepts: "application/json",
         contentType: "application/json",
         data: JSON.stringify(movie),
-        success: function(result) {
-            Swal.fire({
-                position: 'top-end',
+        success: function(result) 
+        {
+            Swal.fire(
+            {
+                position: 'center',
                 type: 'success',
                 title: 'Movie is updated!',
                 showConfirmButton: false,
@@ -146,8 +168,10 @@ function EditMovie(movieId)
     });
 }
 
-function DeleteMovie(movieId) {
-    Swal.fire({
+function DeleteMovie(movieId) 
+{
+    Swal.fire(
+    {
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         type: 'warning',
@@ -155,20 +179,27 @@ function DeleteMovie(movieId) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.value) {
-            $.ajax({
+    }).then((result) => 
+    {
+        if (result.value) 
+        {
+            $.ajax(
+            {
                 url: uri + "/" + movieId,
                 type: "DELETE",
-                success: function() {
+                success: function() 
+                {
                     GetData();
                 }
             });
             Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            )
+            {
+                position: 'center',
+                type: 'success',
+                title: 'Movie is deleted!',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     })
 }

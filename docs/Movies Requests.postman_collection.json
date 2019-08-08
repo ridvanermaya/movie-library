@@ -54,7 +54,14 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"movieId": 19,
+					"title": "The Dark Knight",
+					"genre": "Drama",
+					"director": "Christopher Nolan"
+				}
+			]
 		},
 		{
 			"name": "GET (all)",
@@ -74,7 +81,38 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"movieId": 19,
+					"title": "The Dark Knight",
+					"genre": "Drama",
+					"director": "Christopher Nolan"
+				},
+				{
+					"movieId": 20,
+					"title": "Inception",
+					"genre": "Drama",
+					"director": "Christopher Nolan"
+				},
+				{
+					"movieId": 21,
+					"title": "Pineapple Express",
+					"genre": "Comedy",
+					"director": "David Gordon Green"
+				},
+				{
+					"movieId": 22,
+					"title": "Die Hard",
+					"genre": "Action",
+					"director": "John McTiernan"
+				},
+				{
+					"movieId": 36,
+					"title": "Despicable Me 2",
+					"genre": "Adventure",
+					"director": "Pierre Coffin"
+				}
+			]
 		},
 		{
 			"name": "PUT",

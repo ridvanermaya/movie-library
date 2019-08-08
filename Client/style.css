@@ -2,6 +2,7 @@ body {
     background-color: lightgray;
     margin: auto;
     width: 60%;
+    font-family: 'Roboto Mono', monospace;
 }
 
 #edit-movie {
@@ -29,4 +30,9 @@ body {
 .table-btn {
     margin-right: auto;
     width: 100px;
+}
+
+.row {
+    margin-right: -17px;
+    margin-left: -17px;
 }

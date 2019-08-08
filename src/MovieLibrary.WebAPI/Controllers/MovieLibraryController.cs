@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MovieLibrary.WebAPI.Models;
-using Microsoft.AspNetCore.Cors;
 
 namespace MovieLibraryController.WebAPI.Controllers
 {
@@ -62,7 +61,6 @@ namespace MovieLibraryController.WebAPI.Controllers
         }
 
         // PUT: api/MovieLibraryController
-        
         [HttpPut("{MovieId}")]
         public async Task<IActionResult> PutMovie(int movieId, Movie movie)
         {

@@ -44,7 +44,7 @@ function GetData() {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button onclick="EditMovie(${movie.movieId})" type="button" class="btn btn-primary" id="edit_movie_${index + 1}">Update Movie</button>
+                                                <button onclick="EditMovie(${movie.movieId})" type="button" data-dismiss="modal" class="btn btn-primary" id="edit_movie_${index + 1}">Update Movie</button>
                                             </div>
                                         </div>
                                     </div>
@@ -127,6 +127,7 @@ function EditMovie(movieId)
         contentType: "application/json",
         data: JSON.stringify(movie),
         success: function(result) {
+
             GetData();
         }
     });

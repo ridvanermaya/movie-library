@@ -49,32 +49,7 @@ function GetData() {
                                         </div>
                                     </div>
                                 </div>`;
-                
-                
-                
-                
-                
-                // let divModal = `<div class="modal fade" id="edit-movie-${index}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true"></div>`;
-                // let divModalDialog = `<div class="modal-dialog" role="document"></div>`;
-                // let divModalContent = `<div class="modal-content></div>`;
-                // let divModalHeader = `<div class="modal-header></div>`;
-                // let h5ModalHeader = `<h5 class="modal-header">Edit Movie</h5>`;
-                // let buttonModalHeader = `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>`;
-                // let divModalBody = `<div class="modal-body"></div>`;
-                // let formModalBody = `<form></form>`;
-                // let divFormGroup1 = `<div class="form-group"></div>`;
-                // let divFormGroup1Label = `<label for="movie-title" class=col-form-label">Movie Title</label>`;
-                // let divFormGroup1Input = `<input type="text" class="form-control" id="movie-title-${index}>`;
-                // let divFormGroup2 = `<div class="form-group"></div>`;
-                // let divFormGroup2Label = `<label for="movie-genre" class=col-form-label">Movie Genre</label>`;
-                // let divFormGroup2Input = `<input type="text" class="form-control" id="movie-genre-${index}>`;
-                // let divFormGroup3 = `<div class="form-group"></div>`;
-                // let divFormGroup3Label = `<label for="movie-director" class=col-form-label">Movie Director</label>`;
-                // let divFormGroup3Input = `<input type="text" class="form-control" id="movie-director-${index}>`;
-                // let divModalFooter = `<div class="modal-footer">
-                //                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                //                         <button type="button" class="btn btn-primary id="edit_movie_${index}>Edit Movie</button>
-                //                     </div>`
+             
                 $(tBody).append(
                     $(tr).append(
                         $(td).text(movie.title)
@@ -89,32 +64,9 @@ function GetData() {
                     )
                 );
                 $(".modals").append($(divModal));
-
-                // $("body").append(
-                //     ($(divModal)
-                //         .append($(divModalDialog)
-                //             .append($(divModalContent)
-                //                 .append($(divModalHeader)
-                //                     .append($(h5ModalHeader)
-                //                         .append($(buttonModalHeader))))
-                //                 .append($(divModalBody)
-                //                     .append($(formModalBody)
-                //                         .append($(divFormGroup1)
-                //                             .append($(divFormGroup1Label))
-                //                             .append($(divFormGroup1Input)))
-                //                         .append($(divFormGroup2)
-                //                             .append($(divFormGroup2Label))
-                //                             .append($(divFormGroup2Input)))
-                //                         .append($(divFormGroup3)
-                //                             .append($(divFormGroup3Label))
-                //                             .append($(divFormGroup3Input)))))
-                //                 .append($(divModalFooter)
-                //                     .append($(divModalFooter))
-                //                 )
-                //             )
-                //         )
-                //     )
-                // )
+                $(`#movie-title-${index}`).val(movie.title);
+                $(`#movie-genre-${index}`).val(movie.genre);
+                $(`#movie-director-${index}`).val(movie.director);
             });
         }
     });

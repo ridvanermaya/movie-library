@@ -21,3 +21,12 @@ body {
     width: auto;
     margin-left: 16px;
 }
+
+.moviesTable {
+    margin-bottom: 0px;
+}
+
+.table-btn {
+    margin-right: auto;
+    width: 100px;
+}

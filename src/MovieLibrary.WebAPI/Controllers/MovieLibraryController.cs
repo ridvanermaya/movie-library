@@ -18,13 +18,16 @@ namespace MovieLibraryController.WebAPI.Controllers
         {
             _context = context;
 
-            // if(_context.Movies.Count() == 0)
-            // {
-            //     // Create a new Movie if collection is empty,
-            //     // which means you can't delete all movies.
-            //     _context.Movies.Add(new Movie { Title = "Hobbs & Shaw", Genre = "Action", Director = "David Leitch"});
-            //     _context.SaveChanges();
-            // }
+            if(_context.Movies.Count() == 0)
+            {
+                // Create 5 new Movies if collection is empty,
+                _context.Movies.Add(new Movie { Title = "The Departed", Genre = "Drama", Director = "Martin Scorsese"});
+                _context.Movies.Add(new Movie { Title = "The Dark Knight", Genre = "Drama", Director = "Christopher Nolan"});
+                _context.Movies.Add(new Movie { Title = "Inception", Genre = "Drama", Director = "Christopher Nolan"});
+                _context.Movies.Add(new Movie { Title = "Pineapple Express", Genre = "Comedy", Director = "David Gordon Green"});
+                _context.Movies.Add(new Movie { Title = "Die Hard", Genre = "Action", Director = "John McTiernan"});
+                _context.SaveChanges();
+            }
         }
 
         // GET: api/MovieLibraryController

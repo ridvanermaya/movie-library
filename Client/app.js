@@ -15,10 +15,10 @@ function GetData() {
             $(tBody).empty();
 
             $.each(movies, function(index, movie) {
-                let tr = "<tr></tr>";
-                let td = "<td></td>";
+                let tr = `<tr style="line-height: 10px;"></tr>`;
+                let td = `<td style="line-height: 50px;"></td>`;
                 let divModal = `<div class="modal fade" id="edit-movie-${movie.movieId}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="edit-movie-${movie.movieId}">Edit Movie</h5>
@@ -58,9 +58,8 @@ function GetData() {
                     ).append(
                         $(td).text(movie.director)
                     ).append(
-                        `<button id="btn-edit-movie-${movie.movieId}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-movie-${movie.movieId}">Edit</button>`
-                    ).append(
-                        `<button onclick="DeleteMovie(${movie.movieId})" id="btn-delete-movie-${movie.movieId}"type="button" class="btn btn-primary">Delete</button>`
+                        $(td).append(`<button id="btn-edit-movie-${movie.movieId}" type="button" class="btn btn-secondary table-btn" data-toggle="modal" data-target="#edit-movie-${movie.movieId}">Edit</button>`)
+                        .append(`<button onclick="DeleteMovie(${movie.movieId})" id="btn-delete-movie-${movie.movieId}"type="button" class="btn btn-danger table-btn">Delete</button>`)
                     )
                 );
                 $(".modals").append($(divModal));
@@ -79,22 +78,30 @@ function AddMovie() {
         Director: $("#add-director").val()
     };
 
-    $.ajax({
-        type: "POST",
-        accepts: "application/json",
-        url: uri,
-        contentType: "application/json",
-        data: JSON.stringify(movie),
-        error: (error) => {
-            console.log(error);
-        },
-        success: function(result) {
-            GetData();
-            $("#add-title").val(""),
-            $("#add-genre").val(""),
-            $("#add-director").val("");
-        }
-    });
+    if(movie.Title === "" || movie.Genre === "" || movie.Director === "") {
+        Swal.fire(
+            'Empty Fields?',
+            'You need to input "Movie Title", "Movie Genre", and "Movie Director".',
+            'question'
+          )
+    } else {
+        $.ajax({
+            type: "POST",
+            accepts: "application/json",
+            url: uri,
+            contentType: "application/json",
+            data: JSON.stringify(movie),
+            error: (error) => {
+                console.log(error);
+            },
+            success: function(result) {
+                GetData();
+                $("#add-title").val(""),
+                $("#add-genre").val(""),
+                $("#add-director").val("");
+            }
+        });
+    }
 }
 
 function GetCount(data) {
@@ -132,7 +139,7 @@ function EditMovie(movieId)
                 type: 'success',
                 title: 'Movie is updated!',
                 showConfirmButton: false,
-                timer: 2500
+                timer: 1500
             })
             GetData();
         }
@@ -157,11 +164,11 @@ function DeleteMovie(movieId) {
                     GetData();
                 }
             });
-             Swal.fire(
+            Swal.fire(
                 'Deleted!',
                 'Your file has been deleted.',
                 'success'
-          )
+            )
         }
-      })
+    })
 }

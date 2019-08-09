@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MovieLibrary.WebAPI.Models
 {
@@ -15,5 +16,4 @@ namespace MovieLibrary.WebAPI.Models
         [Display(Name = "Director Name")]
         public string Director { get; set; }
     }
-
 }

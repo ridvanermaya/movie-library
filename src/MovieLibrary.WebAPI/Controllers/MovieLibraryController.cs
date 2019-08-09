@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MovieLibrary.WebAPI.Models;
+using System.Collections;
 
 namespace MovieLibraryController.WebAPI.Controllers
 {
@@ -49,6 +50,27 @@ namespace MovieLibraryController.WebAPI.Controllers
 
             return movie;
         }
+
+        // [HttpGet("{Search}")]
+        // public async Task<IEnumerable<Movie>> SearchMovie(string searchType, string searchInput)
+        // {
+        //     var movies = new List<Movie>();
+
+        //     if (searchType == "Title")
+        //     {
+        //         movies = await _context.Movies.Where(x => x.Title.ToLower() == searchInput.ToLower()).ToListAsync();
+        //     }
+        //     if (searchType == "Genre")
+        //     {
+        //         movies = await _context.Movies.Where(x => x.Genre.ToLower() == searchInput.ToLower()).ToListAsync();
+        //     }
+        //     if (searchType == "Director")
+        //     {
+        //         movies = await _context.Movies.Where(x => x.Director.ToLower() == searchInput.ToLower()).ToListAsync();
+        //     }
+
+        //     return movies;
+        // }
 
         // POST: api/MovieLibraryController
         [HttpPost]

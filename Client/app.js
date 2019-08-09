@@ -22,7 +22,8 @@ function GetData()
             {
                 let tr = `<tr></tr>`;
                 let td = `<td style="line-height: 40px; vertical-align: middle;"></td>`;
-                let divModal = `<div class="modal fade" id="edit-movie-${movie.movieId}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
+                let tdLast = `<td style="line-height: 40px; vertical-align:"></td>`;
+                let editModal = `<div class="modal fade" id="edit-movie-${movie.movieId}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -63,11 +64,12 @@ function GetData()
                     ).append(
                         $(td).text(movie.director)
                     ).append(
-                        $(td).append(`<button id="btn-edit-movie-${movie.movieId}" type="button" class="btn btn-secondary table-btn" data-toggle="modal" data-target="#edit-movie-${movie.movieId}">Edit</button>`)
-                        .append(`<button onclick="DeleteMovie(${movie.movieId})" id="btn-delete-movie-${movie.movieId}"type="button" class="btn btn-danger table-btn">Delete</button>`)
+                        $(tdLast).append(`<button id="btn-edit-movie-${movie.movieId}" type="button" class="btn btn-secondary table-btn" data-toggle="modal" data-target="#edit-movie-${movie.movieId}">Edit</button>`)
+                        .append(`<button onclick="ShowDetails(${movie.movieId})" id="btn-movie-details-${movie.movieId}" type="button" class="btn btn-info table-btn">Details</button>`)
+                        .append(`<button onclick="DeleteMovie(${movie.movieId})" id="btn-delete-movie-${movie.movieId}" type="button" class="btn btn-danger table-btn">Delete</button>`)
                     )
                 );
-                $(".modals").append($(divModal));
+                $(".modals").append($(editModal));
                 $(`#edit-movie-title-${movie.movieId}`).val(movie.title);
                 $(`#edit-movie-genre-${movie.movieId}`).val(movie.genre);
                 $(`#edit-movie-director-${movie.movieId}`).val(movie.director);
@@ -203,3 +205,31 @@ function DeleteMovie(movieId)
         }
     })
 }
+
+function ShowDetails(movieId)
+{
+    Swal.fire('Coming Soon!');
+}
+
+function SearchMovie()
+{
+    Swal.fire(
+        'Do you need to search?',
+        'Simply press "CTRL + F" on your keyboard and type what you want to search!',
+        'warning'
+    )
+}
+
+// function SearchMovie()
+// {
+//     let searchInput = $("#search-input").val(); 
+//     let searchType = $("#search-type").val();
+
+//     $.ajax({
+//         type: "GET",
+//         url: uri + "/" + "Search" + "/" + "?searchType=" + searchType + "&searchInput=" + searchInput,
+//         success: function(movies) {
+//             GetData(movies);
+//         }
+//     })
+// }

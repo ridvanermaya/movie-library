@@ -30,14 +30,14 @@ namespace MovieLibraryController.WebAPI.Controllers
             }
         }
 
-        // GET: api/MovieLibraryController
+        // GET: api/MovieLibrary
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
         {
             return await _context.Movies.ToListAsync();
         }
 
-        // GET: api/MovieLibraryController/5
+        // GET: api/MovieLibrary/5
         [HttpGet("{MovieId}")]
         public async Task<ActionResult<Movie>> GetMovie(int movieId)
         {
@@ -51,28 +51,29 @@ namespace MovieLibraryController.WebAPI.Controllers
             return movie;
         }
 
-        // [HttpGet("{Search}")]
-        // public async Task<IEnumerable<Movie>> SearchMovie(string searchType, string searchInput)
-        // {
-        //     var movies = new List<Movie>();
+        // GET: api/MovieLibrary/Search/
+        [HttpGet("Search")]
+        public List<Movie> SearchMovie(string searchType, string searchInput)
+        {
+            var movies = new List<Movie>();
 
-        //     if (searchType == "Title")
-        //     {
-        //         movies = await _context.Movies.Where(x => x.Title.ToLower() == searchInput.ToLower()).ToListAsync();
-        //     }
-        //     if (searchType == "Genre")
-        //     {
-        //         movies = await _context.Movies.Where(x => x.Genre.ToLower() == searchInput.ToLower()).ToListAsync();
-        //     }
-        //     if (searchType == "Director")
-        //     {
-        //         movies = await _context.Movies.Where(x => x.Director.ToLower() == searchInput.ToLower()).ToListAsync();
-        //     }
+            if (searchType == "Title")
+            {
+                movies = _context.Movies.Where(x => x.Title.ToLower() == searchInput.ToLower()).ToList();
+            }
+            if (searchType == "Genre")
+            {
+                movies = _context.Movies.Where(x => x.Genre.ToLower() == searchInput.ToLower()).ToList();
+            }
+            if (searchType == "Director")
+            {
+                movies = _context.Movies.Where(x => x.Director.ToLower() == searchInput.ToLower()).ToList();
+            }
 
-        //     return movies;
-        // }
+            return movies;
+        }
 
-        // POST: api/MovieLibraryController
+        // POST: api/MovieLibrary
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
@@ -82,7 +83,7 @@ namespace MovieLibraryController.WebAPI.Controllers
             return CreatedAtAction(nameof(GetMovie), new { movieId = movie.MovieId }, movie);
         }
 
-        // PUT: api/MovieLibraryController
+        // PUT: api/MovieLibrary/5
         [HttpPut("{MovieId}")]
         public async Task<IActionResult> PutMovie(int movieId, Movie movie)
         {
@@ -97,7 +98,7 @@ namespace MovieLibraryController.WebAPI.Controllers
             return NoContent();
         }
 
-        // DELETE: api/MovieLibraryController/5
+        // DELETE: api/MovieLibrary/5
         [HttpDelete("{MovieId}")]
         public async Task<IActionResult> DeleteMovie(int movieId)
         {

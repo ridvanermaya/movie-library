@@ -73,6 +73,7 @@ function GetData()
                 $(`#edit-movie-title-${movie.movieId}`).val(movie.title);
                 $(`#edit-movie-genre-${movie.movieId}`).val(movie.genre);
                 $(`#edit-movie-director-${movie.movieId}`).val(movie.director);
+                $("#back-to-home").remove()
             });
         }
     });
@@ -211,25 +212,88 @@ function ShowDetails(movieId)
     Swal.fire('Coming Soon!');
 }
 
-function SearchMovie()
-{
-    Swal.fire(
-        'Do you need to search?',
-        'Simply press "CTRL + F" on your keyboard and type what you want to search!',
-        'warning'
-    )
-}
-
 // function SearchMovie()
 // {
-//     let searchInput = $("#search-input").val(); 
-//     let searchType = $("#search-type").val();
-
-//     $.ajax({
-//         type: "GET",
-//         url: uri + "/" + "Search" + "/" + "?searchType=" + searchType + "&searchInput=" + searchInput,
-//         success: function(movies) {
-//             GetData(movies);
-//         }
-//     })
+//     Swal.fire(
+//         'Do you need to search?',
+//         'Simply press "CTRL + F" on your keyboard and type what you want to search!',
+//         'warning'
+//     )
 // }
+
+function SearchMovie()
+{
+    let searchInput = $("#search-input").val(); 
+    let searchType = $("#search-type").val();
+
+    $.ajax({
+        type: "GET",
+        url: uri + "/" + "Search" + "/" + "?searchType=" + searchType + "&searchInput=" + searchInput,
+        success: function(movies) {
+            const tBody = $("#movies");
+
+            $(tBody).empty();
+
+            $.each(movies, function(index, movie) 
+            {
+                let div = `<div style="display: block; widthL></div>`;
+                let tr = `<tr></tr>`;
+                let td = `<td style="line-height: 40px; vertical-align: middle;"></td>`;
+                let tdLast = `<td style="line-height: 40px; vertical-align:"></td>`;
+                let editModal = `<div class="modal fade" id="edit-movie-${movie.movieId}" tabindex="-1" role="dialog" aria-labelledby="editMovie" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="edit-movie-${movie.movieId}">Edit Movie</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label for="movie-title" class="col-form-label">Movie Title</label>
+                                                        <input type="text" class="form-control" id="edit-movie-title-${movie.movieId}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="movie-genre" class="col-form-label">Movie Genre</label>
+                                                        <input type="text" class="form-control" id="edit-movie-genre-${movie.movieId}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="movie-director" class="col-form-label">Movie Director</label>
+                                                        <input type="text" class="form-control" id="edit-movie-director-${movie.movieId}">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button onclick="EditMovie(${movie.movieId})" type="button" data-dismiss="modal" class="btn btn-primary" id="edit_movie_${index + 1}">Update Movie</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+             
+                $(tBody).append(
+                    $(tr).append(
+                        $(td).text(movie.title)
+                    ).append(
+                        $(td).text(movie.genre)
+                    ).append(
+                        $(td).text(movie.director)
+                    ).append(
+                        $(tdLast).append(`<button id="btn-edit-movie-${movie.movieId}" type="button" class="btn btn-secondary table-btn" data-toggle="modal" data-target="#edit-movie-${movie.movieId}">Edit</button>`)
+                        .append(`<button onclick="ShowDetails(${movie.movieId})" id="btn-movie-details-${movie.movieId}" type="button" class="btn btn-info table-btn">Details</button>`)
+                        .append(`<button onclick="DeleteMovie(${movie.movieId})" id="btn-delete-movie-${movie.movieId}" type="button" class="btn btn-danger table-btn">Delete</button>`)
+                    )
+                );
+                $(".modals").append($(editModal));
+                $(`#edit-movie-title-${movie.movieId}`).val(movie.title);
+                $(`#edit-movie-genre-${movie.movieId}`).val(movie.genre);
+                $(`#edit-movie-director-${movie.movieId}`).val(movie.director);
+                $('body').append(`<button onclick="GetData()" id="back-to-home" type="button" class="btn btn-secondary">Back to List</button>`);
+                $("#search-type").val("Title"),
+                $("#search-input").val("");
+            });
+        }
+    })
+}
